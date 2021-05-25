@@ -1,0 +1,13 @@
+<%= form_with scope: :category, url: create_category_path, local: true do |f| %>
+    <div>
+        <%= f.label :title %>
+        <%= f.text_field :title %>
+    </div>
+    <div>
+        <%= f.label :description %>
+        <%= f.text_field :description %>
+    </div>
+    <div>
+        <%= f.submit "Submit"%>
+    </div>
+<% end %>
