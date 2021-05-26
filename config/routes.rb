@@ -7,5 +7,7 @@ Rails.application.routes.draw do
 #   patch '/categories/:id/edit' => 'categories#update', as: 'update_category'
 #   delete '/categories/:id' => 'categories#destroy', as: 'delete_category'
   # put '/categories/:id/edit' => 'categories#update', as: 'edit_category'
-  resources :categories
+  resources :categories do
+    resources :tasks 
+  end
 end
