@@ -8,6 +8,7 @@ class TaskTest < ActiveSupport::TestCase
     task.due_date = Date.tomorrow
     task.priority = 5
     task.category_id = 2
+    task.completed = false
     assert_not task.save, "Saved without task title"
   end
 
@@ -18,6 +19,7 @@ class TaskTest < ActiveSupport::TestCase
     task.due_date = Date.tomorrow
     task.priority = 3
     task.category_id = 2
+    task.completed = false
     task.save
 
     task = Task.new
@@ -26,6 +28,7 @@ class TaskTest < ActiveSupport::TestCase
     task.due_date = Date.tomorrow
     task.priority = 3
     task.category_id = 2
+    task.completed = false
     assert_not task.save, "Saved with a duplicate task title"
 
   end
@@ -36,6 +39,7 @@ class TaskTest < ActiveSupport::TestCase
     task.description = "This task should not be added"
     task.due_date = Date.tomorrow
     task.category_id = 2
+    task.completed = false
     assert_not task.save, "Saved without task priority level"
   end
 
@@ -46,6 +50,7 @@ class TaskTest < ActiveSupport::TestCase
     task.due_date = Date.tomorrow
     task.priority = 6
     task.category_id = 2
+    task.completed = false
     assert_not task.save, "Saved with task priority level not containing a valid value"
   end
 
@@ -55,7 +60,19 @@ class TaskTest < ActiveSupport::TestCase
     task.description = "This task should not be added"
     task.due_date = Date.tomorrow
     task.priority = 5
+    task.completed = false
     assert_not task.save, "Saved without category id"
   end
+
+  test "should not save without completed" do
+    task = Task.new
+    task.title = "Not saved task"
+    task.description = "This task should not be added"
+    task.due_date = Date.tomorrow
+    task.priority = 5
+    assert_not task.save, "Saved without completed"
+    assert_not_nil(task.completed, "Saved task without completed value")
+  end
+
 
 end
