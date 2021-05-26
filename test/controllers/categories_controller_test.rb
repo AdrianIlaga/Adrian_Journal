@@ -13,7 +13,7 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create new user and redirect" do
     assert_difference -> {Category.count} do
-      post create_category_path, params: { category: {title: 'Testing', 
+      post categories_path, params: { category: {title: 'Testing', 
       description: 'Tasks related to testing'} }
     end
     assert_response :redirect
@@ -21,7 +21,7 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
 
   test "should get existing category" do
     category = dummy_category
-    get show_category_path(category)
+    get category_path(category)
     assert_response :success
   end
 
@@ -32,9 +32,9 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should get update" do
+  test "should get patch update" do
     category = dummy_category
-    patch update_category_path(category), params: { category: {title: 'Testing', 
+    patch category_path(category), params: { category: { title: 'Testing', 
       description: 'Tasks related to testing'} }
     assert_response :redirect
   end
@@ -42,7 +42,7 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
   test "should delete" do
     category = dummy_category
     assert_difference -> {Category.count}, -1 do
-      delete delete_category_path(category)
+      delete category_path(category)
     end
     assert_response :redirect
   end
