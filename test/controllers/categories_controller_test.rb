@@ -32,7 +32,7 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should get patch update" do
+  test "should update category and redirect" do
     category = dummy_category
     patch category_path(category), params: { category: { title: 'Testing', 
       description: 'Tasks related to testing'} }
@@ -46,9 +46,6 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
     end
     assert_response :redirect
   end
-
-  # test "should get delete" do
-  # end
   
   private
 
