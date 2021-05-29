@@ -13,7 +13,7 @@ class TasksController < ApplicationController
         @task = @category.tasks.build(task_params)
 
         if @task.save
-            redirect_to category_tasks_path
+            redirect_to category_path(@category)
         else
             render :new
         end 
@@ -30,7 +30,7 @@ class TasksController < ApplicationController
     def update
         @task = @category.tasks.find(params[:id])
         if @task.update(task_params)
-            redirect_to category_path
+            redirect_to category_path(@category)
         else
         render :edit
         end
@@ -40,13 +40,13 @@ class TasksController < ApplicationController
         @task = @category.tasks.find(params[:id])
         @task.delete
 
-        redirect_to category_path
+        redirect_to category_path(@category)
     end
 
     private
 
     def task_params
-        params.require(:task).permit(:title, :description, :category_id, :priority, :due_date)
+        params.require(:task).permit(:title, :description, :category_id, :priority, :due_date, :completed)
     end
 
     def get_category

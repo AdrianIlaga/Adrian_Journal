@@ -1,0 +1,33 @@
+<%# Note: Not final look %>
+<div class="container">
+<table>
+
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <% @categories.each do |category| %>
+            <tr>
+                <td><%= category.title %></td>
+                <td><%= category.description %></td>
+                <td>
+                    <%= link_to 'View', category_path(category) %>
+                    <%= link_to 'Edit', edit_category_path(category) %>
+                    <%= link_to 'Delete', category_path(category), 
+                                                                    data: { confirm: "Are you sure?" },
+                                                                    method: :delete          
+                    %>
+                </td>
+            </tr>
+        <% end %>
+    </tbody>
+
+</table>
+</div>
+
+<%= link_to 'New Category', new_category_path %>

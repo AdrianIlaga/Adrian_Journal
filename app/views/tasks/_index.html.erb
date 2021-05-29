@@ -1,0 +1,37 @@
+<%# Note: Not final look %>
+<div class="container">
+<table>
+
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Priority</th>
+            <th>Due Date</th>
+            <th>Completed</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <% category.tasks.each do |task| %>
+            <tr>
+                <td><%= task.title %></td>
+                <td><%= task.description %></td>
+                <td><%= task.priority %></td>
+                <td><%= task.due_date %></td>
+                <td><%= task.completed %></td>
+                <td>
+                    <%= link_to 'View', category_task_path(category, task) %>
+                    <%= link_to 'Edit', edit_category_task_path(category, task) %>
+                    <%= link_to 'Delete', category_task_path(category, task), 
+                                                                    data: { confirm: "Are you sure?" },
+                                                                    method: :delete          
+                    %>
+                </td>
+            </tr>
+        <% end %>
+    </tbody>
+
+</table>
+</div>

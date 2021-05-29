@@ -1,0 +1,23 @@
+<div>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+</div>
+<div>
+    <%= f.label :description %>
+    <%= f.text_field :description %>
+</div>
+<div>
+    <%= f.label :priority %>
+    <%= f.number_field :priority, :in => 1..5, :step => '1'%>
+</div>
+<div>
+    <%= f.label :due_date %>
+    <%= f.date_field :due_date %>
+</div>
+<div>
+    <%= f.label :completed %> <br />
+    <%= f.check_box :completed %> <br />
+</div>
+<div>
+    <%= f.submit "Submit"%>
+</div>
