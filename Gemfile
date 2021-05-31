@@ -57,3 +57,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Fixes testing
 gem 'rexml', '~> 3.2', '>= 3.2.4'
+
+# Font awesome
+gem "font-awesome-rails"
