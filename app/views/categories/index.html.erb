@@ -1,33 +1,41 @@
 <%# Note: Not final look %>
-<div class="container">
-<table>
+<div class="container max-w-7xl mx-auto">
 
-    <thead>
-        <tr>
-            <th>Title</th>
-            <th>Description</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
+    <h1 class="text-4xl font-bold tracking-tight text-center">Quests</h1>
 
-    <tbody>
+    <div class="grid grid-cols-3 gap-8 mt-10 sm:grid-cols-8 lg:grid-cols-12 sm:px-8 xl:px-0">
+
         <% @categories.each do |category| %>
-            <tr>
-                <td><%= category.title %></td>
-                <td><%= category.description %></td>
-                <td>
-                    <%= link_to 'View', category_path(category) %>
-                    <%= link_to 'Edit', edit_category_path(category) %>
-                    <%= link_to 'Delete', category_path(category), 
-                                                                    data: { confirm: "Are you sure?" },
-                                                                    method: :delete          
+            <div class="quest h-96 relative flex flex-col items-center justify-between col-span-4 px-8 py-12 space-y-4 overflow-hidden bg-gray-100 sm:rounded-xl">
+                <div class="title">
+                    <h2 class="text-xl font-medium text-gray-700">
+                        <%= category.title %>
+                    </h2>
+                </div>
+                <div class="description h-60">
+                    <h4 class="text-l font-medium text-gray-700">
+                        Description:
+                    </h4>
+                    <p class="text-base text-center text-gray-500">
+                        <%= category.description %>
+                    </p>      
+                </div>
+                <div class="action flex space-x-8">
+                    <%= link_to 'View', category_path(category), class: "btn btn-info" %>
+                    <%= link_to 'Edit', edit_category_path(category), class: "btn btn-success" %>
+                    <%= link_to 'Delete', category_path(category), class: "btn btn-warning", 
+                                                                data: { confirm: "Are you sure?" },
+                                                                method: :delete          
                     %>
-                </td>
-            </tr>
+                </div>
+            </div>
         <% end %>
-    </tbody>
+            <div class="relative flex flex-col items-center justify-between col-span-4 px-8 py-12 space-y-4 overflow-hidden bg-gray-100 sm:rounded-xl">
 
-</table>
+            </div>
+
+    </div>
+
 </div>
 
-<%= link_to 'New Category', new_category_path %>
+<%# <%= link_to 'New Category', new_category_path %> 
