@@ -21,6 +21,11 @@ class TasksController < ApplicationController
 
     def show
         @task = @category.tasks.find(params[:id])
+
+        respond_to do |format|
+            format.html
+            format.js
+        end
     end
 
     def edit 

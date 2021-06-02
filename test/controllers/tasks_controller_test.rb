@@ -33,7 +33,9 @@ class TasksControllerTest < ActionDispatch::IntegrationTest
     task = dummy_task(category)
     get category_task_path(category, task)
 
-    assert_response :success
+    # assert_response :success
+
+    assert_template "categories/show"
   end
 
   test "should get category task edit page" do
