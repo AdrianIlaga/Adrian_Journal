@@ -11,7 +11,7 @@ import "stylesheets/application"
 import "@fortawesome/fontawesome-free/js/all"
 
 require("scripts/custom")
-
+require("jquery")
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
