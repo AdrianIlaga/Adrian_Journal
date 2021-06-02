@@ -1,7 +1,47 @@
-<div>
-    <h1><%= @category.title %> </h1>
-    <p><%= @category.description %> </p>
-</div>
-<%= render "tasks/index", category: @category %>
+<div class="container h-full flex flex-col items-center py-12">
+    <div class="flex flex-col w-3/4 py-8 bg-yellow-50 items-center">
+        
+        <%# Title Block %>
+        <div class="flex flex-col items-center container">
+            <h1 class="text-4xl font-bold text-center">
+                <%= @category.title %> 
+            </h1>
+            <p class="text-xl py-4 w-3/4 text-center">
+                <%= @category.description %> 
+            </p>
+        </div>
 
-<%= link_to 'New task', new_category_task_path(@category) %>
+        <%# Completion Block %>
+        <div class="flex flex-row w-full bg-white h-20 justify-around items-center">
+
+            <h1 class="text-xl font-bold">
+                Quest Completion:
+            </h1>
+
+            <div class="w-1/2 h-3/4 flex flex-col items-start">
+                <p class="font-bold">
+                    A of B Tasks Completed:
+                </p>
+                <div class="border border-black-400 h-1/2 w-full rounded-xl">
+                    <div class="bg-green-400 h-full w-1/2 rounded-xl">
+                    </div>
+                </div>
+            </div>
+
+            <%= link_to new_category_task_path(@category), class: "flex justify-center items-center w-20 h-10 bg-green-400 rounded-lg text-white hover:bg-green-600"  do%>
+                <%= fa_icon "plus" %> 
+                <p class="px-1 text-xl font-bold">Task</p>
+            <% end %>
+        </div>
+        
+        <%# Tasks Block %>
+        <div class="grid grid-cols-4 flex-row container w-full h-96 py-4 items-center justify-items-center bg-yellow-600">
+            <%= render "tasks/index", category: @category %>
+        </div>
+    </div>
+
+    
+
+    
+</div>
+
