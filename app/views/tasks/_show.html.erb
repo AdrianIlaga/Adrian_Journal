@@ -1,0 +1,14 @@
+<div class="w-3/4">
+
+<%= link_to new_category_task_path(@category), class: "flex justify-center items-center w-20 h-10 bg-green-400 rounded-lg text-white hover:bg-green-600"  do%>
+                <%= fa_icon "plus" %> 
+                <p class="px-1 text-xl font-bold">Task</p>
+<% end %>
+
+<h1><%= @task.title %> </h1>
+<p><%= @task.description %> </p>
+<p><%= @task.priority %> </p>
+<p><%= @task.due_date %> </p>
+<p><%= @task.completed %> </p>
+
+</div>

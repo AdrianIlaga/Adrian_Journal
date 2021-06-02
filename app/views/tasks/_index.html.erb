@@ -1,37 +1,19 @@
 <%# Note: Not final look %>
-<div class="container">
-<table>
 
-    <thead>
-        <tr>
-            <th>Title</th>
-            <th>Description</th>
-            <th>Priority</th>
-            <th>Due Date</th>
-            <th>Completed</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
+<div class="flex flex-col col-span-1 items-center justify-start h-full">
+    <h3 class="text-xl font-bold w-5/6 text-center bg-yellow-50 m-4">
+        Tasks
+    </h3>
 
-    <tbody>
-        <% category.tasks.each do |task| %>
-            <tr>
-                <td><%= task.title %></td>
-                <td><%= task.description %></td>
-                <td><%= task.priority %></td>
-                <td><%= task.due_date %></td>
-                <td><%= task.completed %></td>
-                <td>
-                    <%= link_to 'View', category_task_path(category, task) %>
-                    <%= link_to 'Edit', edit_category_task_path(category, task) %>
-                    <%= link_to 'Delete', category_task_path(category, task), 
-                                                                    data: { confirm: "Are you sure?" },
-                                                                    method: :delete          
-                    %>
-                </td>
-            </tr>
-        <% end %>
-    </tbody>
+    <% category.tasks.each do |task| %>
 
-</table>
+        <%= link_to task.title, category_task_path(category, task), remote: true, class: "btn m-4 text-center w-5/6 bg-green-400 text-white" %>
+
+    <% end %>
 </div>
+
+<div id="task-view" class="flex flex-col items-center justify-center col-span-3 w-5/6 h-5/6 bg-yellow-50">
+
+</div>
+
+
