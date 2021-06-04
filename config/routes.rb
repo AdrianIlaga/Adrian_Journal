@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root 'tasks#daily'
   
   resources :categories do
-    resources :tasks , :except => [:index, :show]
+    resources :tasks , :except => [:index]
   end
 
 end
