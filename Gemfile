@@ -60,3 +60,6 @@ gem 'rexml', '~> 3.2', '>= 3.2.4'
 
 # Font awesome
 gem "font-awesome-rails"
+
+# Devise
+gem 'devise', '~> 4.8'

@@ -1,5 +1,15 @@
 class TasksController < ApplicationController
     before_action :get_category
+    skip_before_action :get_category, only: [:daily]
+
+    def daily
+        @categories = Category.all
+        @tasks = []
+        @categories.each do |category|
+            @tasks += category.tasks.where(due_date: Date.today)
+        end
+
+    end
 
     def index
         @tasks = @category.tasks
@@ -37,7 +47,7 @@ class TasksController < ApplicationController
         if @task.update(task_params)
             redirect_to category_path(@category)
         else
-        render :edit
+            render :edit
         end
     end
 

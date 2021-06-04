@@ -6,6 +6,11 @@
 
   <body>
     <%= render "partials/navbar" %>
+
+    <% if notice || alert %>
+      <%= render "partials/alerts" %>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>
