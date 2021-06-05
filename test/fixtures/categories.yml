@@ -4,7 +4,9 @@ one:
   id: 1
   title: "Category1"
   description: "MyString"
+  user_id: 1
 
 two:
   title: "Category2"
   description: "MyString"
+  user_id: 2

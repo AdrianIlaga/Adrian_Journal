@@ -4,7 +4,7 @@ class TasksController < ApplicationController
     skip_before_action :get_category, only: [:daily]
 
     def daily
-        @categories = Category.all
+        @categories = current_user.categories.all
         @tasks = []
         @categories.each do |category|
             @tasks += category.tasks.where(due_date: Date.today)
@@ -62,10 +62,10 @@ class TasksController < ApplicationController
     private
 
     def task_params
-        params.require(:task).permit(:title, :description, :category_id, :priority, :due_date, :completed)
+        params.require(:task).permit(:title, :description, :category_id, :priority, :due_date, :completed, :user_id)
     end
 
     def get_category
-        @category = Category.find(params[:category_id])
+        @category = current_user.categories.find(params[:category_id])
     end
 end
