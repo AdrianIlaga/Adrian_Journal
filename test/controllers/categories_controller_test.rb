@@ -3,6 +3,10 @@ require "test_helper"
 class CategoriesControllerTest < ActionDispatch::IntegrationTest
 
   setup do
+    get '/users/sign_in'
+    sign_in users(:one)
+    post user_session_url
+
     @category = categories(:one)
   end
 

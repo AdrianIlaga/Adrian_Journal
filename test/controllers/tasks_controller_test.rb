@@ -2,11 +2,16 @@ require "test_helper"
 
 class TasksControllerTest < ActionDispatch::IntegrationTest
 
-  
-
   setup do
+    get '/users/sign_in'
+    sign_in users(:one)
+    post user_session_url
+
     @category = categories(:one)
     @task = tasks(:one)
+
+    # follow_redirect!
+    # assert_response :success
   end
 
   # Note: Find way to test task index in category show page
