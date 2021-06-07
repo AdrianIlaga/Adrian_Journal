@@ -1,9 +1,12 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: MyString
-  description: MyString
+  id: 1
+  title: "Category1"
+  description: "MyString"
+  user_id: 1
 
 two:
-  title: MyString
-  description: MyString
+  title: "Category2"
+  description: "MyString"
+  user_id: 2

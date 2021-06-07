@@ -37,13 +37,27 @@
         <div class="hidden sm:block sm:ml-6">
           <div class="flex space-x-4">
             <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-            <a href="/categories" class="nav-inactive" aria-current="page">Questboard</a>
+            <% if user_signed_in? %>
 
-            <a href="/categories/new" class="nav-inactive">Add Quest</a>
+              <a href="/categories" class="nav-inactive" aria-current="page">Questboard</a>
 
-            <a href="#" class="nav-inactive">Daily Tasks</a>
+              <a href="/categories/new" class="nav-inactive">Add Quest</a>
 
-            <a href="#" class="nav-inactive">Calendar</a>
+              <a href="/" class="nav-inactive">Daily Tasks</a>
+
+              <%= link_to "Log out", destroy_user_session_path , class: "nav-inactive", method: :delete %>
+
+            <% else %>
+            
+              <%= link_to "Sign-Up", new_user_registration_path , class: "nav-inactive" %>
+
+              <%= link_to "Sign-in", new_user_session_path , class: "nav-inactive" %>
+
+            <% end %>
+
+            
+
+            <%# <a href="#" class="nav-inactive">Calendar</a> %>
           </div>
         </div>
       </div>

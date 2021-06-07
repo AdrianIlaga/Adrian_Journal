@@ -1,5 +1,16 @@
 class TasksController < ApplicationController
+    before_action :authenticate_user!
     before_action :get_category
+    skip_before_action :get_category, only: [:daily]
+
+    def daily
+        @categories = current_user.categories.all
+        @tasks = []
+        @categories.each do |category|
+            @tasks += category.tasks.where(due_date: Date.today)
+        end
+
+    end
 
     def index
         @tasks = @category.tasks
@@ -37,7 +48,7 @@ class TasksController < ApplicationController
         if @task.update(task_params)
             redirect_to category_path(@category)
         else
-        render :edit
+            render :edit
         end
     end
 
@@ -55,6 +66,6 @@ class TasksController < ApplicationController
     end
 
     def get_category
-        @category = Category.find(params[:category_id])
+        @category = current_user.categories.find(params[:category_id])
     end
 end

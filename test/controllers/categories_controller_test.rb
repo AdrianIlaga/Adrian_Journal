@@ -1,6 +1,15 @@
 require "test_helper"
 
 class CategoriesControllerTest < ActionDispatch::IntegrationTest
+
+  setup do
+    get '/users/sign_in'
+    sign_in users(:one)
+    post user_session_url
+
+    @category = categories(:one)
+  end
+
   test "should get categories index" do 
     get categories_path 
     assert_response :success
@@ -20,42 +29,26 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get existing category" do
-    category = dummy_category
-    get category_path(category)
+    get category_path(@category)
     assert_response :success
   end
 
   test "should get edit" do
-    category = dummy_category
-
-    get edit_category_path(category)
+    get edit_category_path(@category)
     assert_response :success
   end
 
   test "should update category and redirect" do
-    category = dummy_category
-    patch category_path(category), params: { category: { title: 'Testing', 
+    patch category_path(@category), params: { category: { title: 'Testing', 
       description: 'Tasks related to testing'} }
     assert_response :redirect
   end
 
   test "should delete" do
-    category = dummy_category
     assert_difference -> {Category.count}, -1 do
-      delete category_path(category)
+      delete category_path(@category)
     end
     assert_response :redirect
   end
-  
-  private
-
-  def dummy_category
-    category = Category.new
-    category.title = "Test"
-    category.description = "Test description"
-    category.save
-    return category
-  end
-
 
 end
