@@ -7,27 +7,55 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "user must have username" do
-    user = User.new
-    # user.username = @user.username
-    user.email = @user.email
-    user.encrypted_password = @user.encrypted_password
-    assert_not user.save, "Saved without username"
+    new_user = User.new
+    # new_user.username = "Bla"
+    new_user.email = "test@yahoo.com"
+    new_user.password = "password"
+    assert_not new_user.save, "Saved without username"
+  end
+
+  test "username must be unique" do
+    new_user = User.new
+    new_user.username = "Bla"
+    new_user.email = "test@yahoo.com"
+    new_user.password = "password"
+    new_user.save
+
+    new_user = User.new
+    new_user.username = "Bla"
+    new_user.email = "test2@yahoo.com"
+    new_user.password = "password"
+    assert_not new_user.save, "Saved with duplicate username"
   end
 
   test "user must have email" do
-    user = User.new
-    user.username = @user.username
-    # user.email = @user.email
-    user.encrypted_password = @user.encrypted_password
-    assert_not user.save, "Saved without email"
+    new_user = User.new
+    new_user.username = "Bla"
+    # new_user.email = "test@yahoo.com"
+    new_user.password = "password"
+    assert_not new_user.save, "Saved without email"
+  end
+
+  test "email must be unique" do
+    new_user = User.new
+    new_user.username = "Bla"
+    new_user.email = "test@yahoo.com"
+    new_user.password = "password"
+    new_user.save
+
+    new_user = User.new
+    new_user.username = "Bla2"
+    new_user.email = "test@yahoo.com"
+    new_user.password = "password"
+    assert_not new_user.save, "Saved with duplicate email"
   end
 
   test "user must have password" do 
-    user = User.new
-    user.username = @user.username
-    user.email = @user.email
-    # user.encrypted_password = @user.encrypted_password
-    assert_not user.save, "Saved without password"
+    new_user = User.new
+    new_user.username = "Bla"
+    new_user.email = "test@yahoo.com"
+    # new_user.password = "password"
+    assert_not new_user.save, "Saved without password"
   end
 
 
