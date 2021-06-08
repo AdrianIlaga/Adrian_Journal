@@ -5,13 +5,14 @@ class TasksController < ApplicationController
     skip_before_action :authenticate_user!, only: [:daily]
 
     def daily
-        if user_signed_in?
+        if !current_user.nil? do
             @categories = current_user.categories.all
             @tasks = []
             @categories.each do |category|
                 @tasks += category.tasks.where(due_date: Date.today)
             end
         end
+    end
 
     end
 

@@ -5,8 +5,6 @@ class Task < ApplicationRecord
 
     validates :priority, presence: true, inclusion: { in: (1..5), message: "Must be an integer between 1 to 5" }
 
-    validates :due_date, presence: true
-
     after_initialize :default_values
 
     private
