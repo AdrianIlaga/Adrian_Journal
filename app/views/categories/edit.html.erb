@@ -2,14 +2,12 @@
     <%= render "partials/errors", page: @category%>
 </div>
 
-<div class="container grid grid-cols-3 gap-6 px-24 py-16">
+<h1 class="page-header">Edit Category</h1>
 
-    <div class="col-span-2">
-        <%# Insert flash picture or words here %>
-    </div>
+<div class="form-container">
 
-    <div class="col-span-1 bg-yellow-50 shadow-lg">
-        <%= form_with scope: :category, model: @category, class: "flex flex-col px-4 py-4", local: true do |f| %>
+    <div class="form-div">
+        <%= form_with scope: :category, model: @category, class: "form", local: true do |f| %>
             <%= render "form", f: f %>
         <% end %>
     </div>
