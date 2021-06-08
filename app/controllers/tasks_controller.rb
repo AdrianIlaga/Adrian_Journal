@@ -2,13 +2,17 @@ class TasksController < ApplicationController
     before_action :authenticate_user!
     before_action :get_category
     skip_before_action :get_category, only: [:daily]
+    skip_before_action :authenticate_user!, only: [:daily]
 
     def daily
-        @categories = current_user.categories.all
-        @tasks = []
-        @categories.each do |category|
-            @tasks += category.tasks.where(due_date: Date.today)
+        if !current_user.nil? do
+            @categories = current_user.categories.all
+            @tasks = []
+            @categories.each do |category|
+                @tasks += category.tasks.where(due_date: Date.today)
+            end
         end
+    end
 
     end
 

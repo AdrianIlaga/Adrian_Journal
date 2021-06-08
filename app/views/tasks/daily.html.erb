@@ -1,3 +1,12 @@
-<% @tasks.each do |task| %>
-    <p><%= task.title %></p>
+<%# If user is signed in %>
+<% if user_signed_in? %>
+    <% @tasks.each do |task| %>
+        <p><%= task.title %></p>
+    <% end %>
 <% end %>
+
+<%# If user is not signed in %>
+<div data-controller="hello">
+    <button class="btn btn-primary bg-green-700" data-action="click->hello#greet" >Say Hello</button>
+    <h1 data-target="hello.heading">This is the home page</h1>
+</div>
