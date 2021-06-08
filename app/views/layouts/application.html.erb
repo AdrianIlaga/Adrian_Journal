@@ -4,7 +4,7 @@
     <%= render "partials/head" %>
   </head>
 
-  <body>
+  <body class="flex flex-col items-center w-full">
     <%= render "partials/navbar" %>
 
     <% if notice || alert %>
@@ -12,5 +12,7 @@
     <% end %>
 
     <%= yield %>
+
+    <%= javascript_pack_tag 'custom', 'data-turbolinks-track': 'reload' %>
   </body>
 </html>
