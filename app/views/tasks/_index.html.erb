@@ -1,21 +1,23 @@
 <%# Note: Not final look %>
+<% if category.tasks.count > 0 %>
+    <div class="flex flex-col col-span-1 items-center justify-start h-full">
+        <h3 class="text-xl font-bold w-5/6 text-center bg-yellow-50 m-4">
+            Tasks
+        </h3>
 
-<div class="flex flex-col col-span-1 items-center justify-start h-full">
-    <h3 class="text-xl font-bold w-5/6 text-center bg-yellow-50 m-4">
-        Tasks
-    </h3>
+        <% category.tasks.each do |task| %>
 
-    <% category.tasks.each do |task| %>
+            <%= link_to task.title, category_task_path(category, task), remote: true, class: "btn m-4 text-center w-5/6 bg-green-400 text-white" %>
+        
+        <% end %>
+    
+    </div>
 
-        <%= link_to task.title, category_task_path(category, task), remote: true, class: "btn m-4 text-center w-5/6 bg-green-400 text-white" %>
+    <div id="task-view" class="flex flex-col items-center justify-start col-span-3 w-5/6 h-5/6 bg-yellow-50">
 
-    <% end %>
-</div>
+        <%= render "tasks/show", task: category.tasks.first %>
 
-<div id="task-view" class="flex flex-col items-center justify-start col-span-3 w-5/6 h-5/6 bg-yellow-50">
-
-    <%= render "tasks/show", task: category.tasks.first %>
-
-</div>
+    </div>
+<% end %>
 
 

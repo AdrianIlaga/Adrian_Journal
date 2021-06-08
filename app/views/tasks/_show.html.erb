@@ -2,11 +2,11 @@
     
     <div class="flex flex-row w-full justify-end">
 
-        <%= link_to edit_category_task_path(@category), class: "flex justify-center items-center w-10 h-10 bg-yellow-400 rounded-lg text-white hover:bg-yellow-600 m-2"  do%>
+        <%= link_to edit_category_task_path(@category, task), class: "flex justify-center items-center w-10 h-10 bg-yellow-400 rounded-lg text-white hover:bg-yellow-600 m-2"  do%>
                         <%= fa_icon "edit" %> 
                         <%# <p class="px-1 text-xl font-bold">Task</p> %>
         <% end %>
-        <%= link_to category_task_path(@category), class: "flex justify-center items-center w-10 h-10 bg-red-400 rounded-lg text-white hover:bg-red-600 m-2", method: :delete  do %>
+        <%= link_to category_task_path(@category, task), class: "flex justify-center items-center w-10 h-10 bg-red-400 rounded-lg text-white hover:bg-red-600 m-2", method: :delete  do %>
                         <%= fa_icon "trash-alt" %> 
                         <%# <p class="px-1 text-xl font-bold">Task</p> %>
         <% end %>
