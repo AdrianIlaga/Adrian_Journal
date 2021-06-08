@@ -40,13 +40,14 @@ class TasksControllerTest < ActionDispatch::IntegrationTest
   end
 
   # test "should get category task show page" do
-  #   # category = dummy_category
-  #   # task = dummy_task(category)
+  #   category = dummy_category
+  #   task = dummy_task(category)
   #   get category_task_path(@category, @task)
 
   #   # assert_response :success
 
   #   assert_template "categories/show"
+  #   assert_template layout: "layouts/application", partial: "_show"
   # end
 
   test "should get category task edit page" do
