@@ -20,8 +20,11 @@ function hideNav(element) {
 
 let navDropdown = document.getElementById("nav-profile-dropdown");
 console.log(navDropdown)
-navDropdown.style.visibility = "hidden";
 
-document.getElementById("nav-profile").addEventListener("click", () => {
-    hideNav(navDropdown);
-});
+
+if(navDropdown) {
+    navDropdown.style.visibility = "hidden";
+    document.getElementById("nav-profile").addEventListener("click", () => {
+        hideNav(navDropdown);
+    });
+}
