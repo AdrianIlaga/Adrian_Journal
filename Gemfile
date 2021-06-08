@@ -63,11 +63,3 @@ gem "font-awesome-rails"
 
 # Devise
 gem 'devise', '~> 4.8'
-
-# Stimulus reflex
-gem "stimulus_reflex", "~> 3.4"
-
-# Redis
-gem 'redis'
-gem 'redis-namespace'
-gem 'redis-rails'
