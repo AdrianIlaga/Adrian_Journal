@@ -22,7 +22,7 @@
 
             <div class="w-1/2 h-3/4 flex flex-col items-start">
                 <p class="font-bold">
-                    A of B Tasks Completed:
+                    <%= @category.tasks.where(completed: true).count %> of <%= @category.tasks.count %> Tasks Completed:
                 </p>
                 <div class="border border-black-400 h-1/2 w-full rounded-xl">
                     <div class="bg-green-400 h-full w-1/2 rounded-xl">
@@ -37,7 +37,7 @@
         </div>
         
         <%# Tasks Block %>
-        <div class="grid grid-cols-4 flex-row container w-full h-96 py-4 items-center justify-items-center bg-yellow-600">
+        <div class="grid grid-cols-4 flex-row container w-full h-96 items-center justify-items-center bg-gray-800">
             <%= render "tasks/index", category: @category %>
         </div>
     </div>
