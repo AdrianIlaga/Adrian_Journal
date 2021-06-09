@@ -28,7 +28,7 @@ class TasksController < ApplicationController
         @task = @category.tasks.build(task_params)
 
         if @task.save
-            redirect_to category_path(@category)
+            redirect_to category_path(@category), notice: "Task Successfully Created"
         else
             render :new
         end 
@@ -45,12 +45,19 @@ class TasksController < ApplicationController
 
     def edit 
         @task = @category.tasks.find(params[:id])
+        session[:return_to] ||= request.referer
     end
 
     def update
         @task = @category.tasks.find(params[:id])
         if @task.update(task_params)
-            redirect_to category_path(@category)
+            # redirect_to category_path(@category), notice: "Task Successfully Updated"
+            flash[:notice] = "Task Successfully Updated"
+            if session[:return_to]
+                redirect_to session.delete(:return_to)
+            else
+                redirect_back(fallback_location: root_path)
+            end
         else
             render :edit
         end
@@ -60,7 +67,7 @@ class TasksController < ApplicationController
         @task = @category.tasks.find(params[:id])
         @task.delete
 
-        redirect_to category_path(@category)
+        redirect_to category_path(@category), notice: "Task Successfully Deleted"
     end
 
     private

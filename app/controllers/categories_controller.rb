@@ -13,7 +13,7 @@ class CategoriesController < ApplicationController
         @category = current_user.categories.build(category_params)
 
         if @category.save
-            redirect_to categories_path
+            redirect_to categories_path, notice: "Quest Successfuly Created"
         else
             render :new
         end 
@@ -29,8 +29,9 @@ class CategoriesController < ApplicationController
 
     def update
         @category = current_user.categories.find(params[:id])
+   
         if @category.update(category_params)
-            redirect_to category_path
+            redirect_to category_path, notice: "Quest Successfuly Updated"
         else
         render :edit
         end
@@ -40,7 +41,7 @@ class CategoriesController < ApplicationController
         @category = current_user.categories.find(params[:id])
         @category.delete
 
-        redirect_to categories_path
+        redirect_to categories_path, notice: "Quest Successfuly Deleted"
     end
 
 
