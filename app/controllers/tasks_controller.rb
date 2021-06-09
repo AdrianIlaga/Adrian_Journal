@@ -11,6 +11,7 @@ class TasksController < ApplicationController
             @categories.each do |category|
                 @tasks += category.tasks.where(due_date: Date.today)
             end
+            @tasks = @tasks.sort_by(&:priority)
         end
 
     end

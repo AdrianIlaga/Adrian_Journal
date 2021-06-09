@@ -7,7 +7,7 @@
 
         <% category.tasks.order(:priority).each do |task| %>
 
-            <%= link_to task.title, category_task_path(category, task), class: task.completed? ? "flex justify-center items-center w-full h-16 nav-inactive text-xl text-green-400" : "flex justify-center items-center w-full h-16 nav-inactive text-xl", remote: true%>
+            <%= link_to task.title, category_task_path(category, task), class: task.completed? ? "flex justify-center items-center w-full h-16 nav-inactive text-xl text-green-400 hover:text-green-200" : "flex justify-center items-center w-full h-16 nav-inactive text-xl", remote: true%>
         
         <% end %>
     
