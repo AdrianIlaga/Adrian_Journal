@@ -1,5 +1,5 @@
-<div class="container h-full flex flex-col items-center py-12">
-    <div class="flex flex-col w-3/4 py-8 bg-yellow-50 items-center">
+<div class="container h-full flex flex-col items-center">
+    <div class="flex flex-col w-3/4 py-8 items-center">
         
         <%# Title Block %>
         <div class="flex flex-col items-center container">
@@ -11,21 +11,23 @@
             </p>
         </div>
 
+        <%= link_to "Go Back", categories_path, class: "relative btn btn-info right-1/2"%>
+
         <%# Completion Block %>
         <div class="flex flex-row w-full bg-white h-20 justify-around items-center">
 
-            <h1 class="text-xl font-bold">
+            <h1 class="text-2xl font-bold">
                 Quest Completion:
             </h1>
 
-            <div class="w-1/2 h-3/4 flex flex-col items-start">
-                <p class="font-bold">
-                    A of B Tasks Completed:
+            <div class="w-1/2 h-3/4 flex flex-col items-center justify-center">
+                <p class="font-bold text-2xl">
+                    <%= @category.tasks.where(completed: true).count %> of <%= @category.tasks.count %> Tasks Completed
                 </p>
-                <div class="border border-black-400 h-1/2 w-full rounded-xl">
+                <%# <div class="border border-black-400 h-1/2 w-full rounded-xl">
                     <div class="bg-green-400 h-full w-1/2 rounded-xl">
                     </div>
-                </div>
+                </div> %>
             </div>
 
             <%= link_to new_category_task_path(@category), class: "flex justify-center items-center w-20 h-10 bg-green-400 rounded-lg text-white hover:bg-green-600"  do%>
@@ -35,7 +37,7 @@
         </div>
         
         <%# Tasks Block %>
-        <div class="grid grid-cols-4 flex-row container w-full h-96 py-4 items-center justify-items-center bg-yellow-600">
+        <div class="grid grid-cols-4 flex-row container w-full h-96 items-center justify-items-center bg-gray-800 px-2 py-2">
             <%= render "tasks/index", category: @category %>
         </div>
     </div>

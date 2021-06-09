@@ -13,16 +13,16 @@
                     </h2>
                 </div>
                 <div class="description h-60">
-                    <h4 class="text-l font-medium text-gray-700 pt-4">
+                    <%# <h4 class="text-l font-medium text-gray-700 pt-4">
                         Description:
-                    </h4>
+                    </h4> %>
                     <p class="text-base text-center text-gray-500 pt-4">
                         <%= category.description %>
                     </p>      
                 </div>
                 <div class="action flex space-x-8">
                     <%= link_to 'View', category_path(category), class: "btn btn-info" %>
-                    <%= link_to 'Edit', edit_category_path(category), class: "btn btn-success" %>
+                    <%= link_to 'Edit', edit_category_path(category), class: "btn btn-edit" %>
                     <%= link_to 'Delete', category_path(category), class: "btn btn-warning", 
                                                                 data: { confirm: "Are you sure?" },
                                                                 method: :delete          

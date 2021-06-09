@@ -97,7 +97,18 @@ class TaskTest < ActiveSupport::TestCase
     task.due_date = Date.tomorrow
     task.priority = 5
     assert_not task.save, "Saved without completed"
+    task.category_id = @category1.id 
     assert_not_nil(task.completed, "Saved task without completed value")
+  end
+
+  test "should not save without due date" do
+    task = Task.new
+    task.title = "Not saved task"
+    task.description = "This task should not be added"
+    task.priority = 5
+    task.completed = false
+    task.category_id = @category1.id 
+    assert_not task.save, "Saved without due date"
   end
 
 end
