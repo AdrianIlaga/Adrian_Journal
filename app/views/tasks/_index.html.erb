@@ -5,7 +5,7 @@
             Tasks
         </h3>
 
-        <% category.tasks.each do |task| %>
+        <% category.tasks.order(:priority).each do |task| %>
 
             <%= link_to task.title, category_task_path(category, task), remote: true, class: "btn m-4 text-center w-5/6 bg-green-400 text-white" %>
         

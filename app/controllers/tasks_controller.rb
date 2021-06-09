@@ -15,9 +15,9 @@ class TasksController < ApplicationController
 
     end
 
-    def index
-        @tasks = @category.tasks
-    end
+    # def index
+    #     @tasks = @category.tasks.sort(:priority)
+    # end
 
     def new
         @task = @category.tasks.build 
